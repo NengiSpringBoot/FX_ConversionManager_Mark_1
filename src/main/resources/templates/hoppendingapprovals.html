@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" type="text/css"/>
+    <link rel="stylesheet" th:href="@{/fontawesome/all.css}" type="text/css"/>
+    <link rel="stylesheet" th:href="@{/style.css}" type="text/css"/>
+    <link rel="stylesheet" th:href="@{/css/formatting.css}">
+    <script th:src="@{/webjars/jquery/jquery.min.js}" type="text/javascript"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}" type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+
+</head>
+<body>
+
+<nav  class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#"> Project IO</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+
+</nav>
+<h1>LIST REQUESTS PAGE</h1>
+
+<div class="container">
+    <hr>
+
+    <!--  Add New Bug Button -->
+    <a th:href="@{/bug/new}"
+       class="btn btn-primary btn-sm mb-3"> 
+        Add Request 
+    </a> 
+    <br></br>
+
+    <table class="table table-bordered table-striped " >
+        <thead class="thead-dark" >
+        <tr>
+            <th>Id</th>
+            <th>Request Title</th>
+            <th>Customer Name</th>
+            <th>Stage</th>
+            <th>Submitted</th>
+            <th>HOP Approval</th>
+            <th>App. Date</th>
+            <th>Treas. Approval</th>
+            <th>TROPS Approval</th>
+            <th>Last Update</th>
+
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="aBug : ${pendingApprovals}">
+
+            <td th:text="${aBug.requestId}"></td>
+            <td th:text="${aBug.requestTitle}"></td>
+            <td th:text="${aBug.requestCustomerName}" ></td>
+            <td th:text="${aBug.requestWorkflow}"></td>
+            <td th:text="${aBug.RSMSubmitted}"></td>
+            <td th:text="${aBug.isHOPApproved}"></td>
+            <td th:text="${aBug.HOPApprovalDate}"></td>
+            <td th:text="${aBug.isTreasuryApproved}"></td>
+            <td th:text="${aBug.isTROPSApproved}"></td>
+
+<!--            <td>-->
+<!--                <a class="fas fa-edit fa-2x icon-green"-->
+<!--                   th:href="@{/bug/edit/{id}(id=${aBug.bugId})}"-->
+<!--                   title="Edit this bug"></a>-->
+
+<!--                <a class="fas fa-trash fa-2x icon-dark link-delete"-->
+<!--                   th:href="@{/bug/delete/{id}(id=${aBug.bugId})}"-->
+<!--                   title="Delete this bug"></a>-->
+<!--            </td>-->
+
+
+
+
+        </tr>
+        </tbody>
+
+
+
+
+    </table>
+
+
+</div>
+
+
+
+</body>
+</html>
